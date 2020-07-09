@@ -12,7 +12,7 @@ export default class OptionsScene extends Phaser.Scene {
     // this.musicOn = true;
     // this.soundOn = true;
     this.model = this.sys.game.globals.model;
-
+    console.log(this.sys.game.globals);
     this.text = this.add.text(300, 100, 'Options', {
       fontSize: 40
     });

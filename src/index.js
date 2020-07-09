@@ -9,12 +9,14 @@ import CreditsScene from './Scenes/CreditsScene';
 import GameOverScene from './Scenes/GameOverScene';
 import LeaderBoardScene from './Scenes/LeaderBoardScene';
 import Model from './Model';
+import Score from './Score';
 
 class Game extends Phaser.Game {
   constructor() {
     super(config);
     const model = new Model();
-    this.globals = { model, bgMusic: null };
+    const score = new Score();
+    this.globals = { model, score, bgMusic: null };
     this.scene.add('Boot', BootScene);
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('Title', TitleScene);

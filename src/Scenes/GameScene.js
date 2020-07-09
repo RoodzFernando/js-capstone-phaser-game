@@ -7,27 +7,20 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
+    this.score = this.sys.game.globals.score;
     this.add.image(400, 300, 'road');
     this.cars = this.physics.add.sprite((this.sys.game.config.width / 2) + 65, 450, 'cars1');
 
-    // this.cars.setBounce(0.1);
+
     this.cars.setCollideWorldBounds(true);
     this.cars.setScale(1.2);
     this.cars.setGravityY(300);
-    // this.physics.add.existing(this.cars, true);
+
     // add the borders
     this.borders = this.add.tileSprite(this.sys.game.config.width / 2, 2, 1 * 32, (40) * 32, 'border');
     this.borders2 = this.add.tileSprite(this.sys.game.config.width - 100, 2, 1 * 32, (40) * 32, 'border');
-    this.physics.add.collider(this.cars, this.borders);
-    this.physics.add.collider(this.cars, this.borders2);
-    // this.borders.body.immovable =true
-    // this.borders.body.collideWorldBounds = true;
-    // this.borders.body.immovable = true;
-    // this.borders.body.allowGravity = false;
-    // this.borders.body.collideWorldBounds =  true;
-    // this.borders2.body.collideWorldBounds =  true;
-
-    // 
+    this.physics.add.staticGroup(this.borders);
+    //
     this.anims.create({
       key: 'left',
       frames: [{
@@ -100,20 +93,16 @@ export default class GameScene extends Phaser.Scene {
       });
     });
     // collide handling
-    
+
     this.physics.add.overlap(this.cars, this.opponents, collideHandler, null, this);
-    this.collisionVar = true;
+    let collisionVar = false;
+    this.initialTime = Date.now();
+    this.gameDuration;
 
     function collideHandler(car, opponent) {
       this.physics.pause();
-      // opponent.physics.pause();
-      console.log(this.physics);
-      // this.scene.remove('Game');
       this.scene.start('GameOver');
-      // this.time.paused = true;
-      // this.game.destroy(false, false);
-      // window.game.enable(false);
-      console.log(this.game.getTime());
+      collisionVar = true;
       car.setTint(0xff0000);
       this.add.text(this.sys.game.config.width / 2 - 100, this.sys.game.config.height / 2 - 180, "Collision detected. Retry!", {
         fontSize: "15px",
@@ -121,32 +110,12 @@ export default class GameScene extends Phaser.Scene {
         fontFamily: "Cascadia Code",
         fontWeight: "bold"
       });
+      this.finalTime = Date.now();
+      this.score.score = `${Math.floor((this.finalTime - this.initialTime)/1000)} s` ;
+      console.log(this.score.score);
     }
-
-    // update the score
-    this.score = 0;
-    this.scoreText = this.add.text(16, 16, 'score: 0', {
-      fontSize: '40px',
-      fill: '#FFF',
-      fontFamily: "Cascadia Code"
-    });
-
-    // game.time.events.loop(100, updateCounter, this);
-    // console.log(this.scene.events);
-
-    // this.scene.events.on('step', function (time, delta) {
-    //   //
-    //   this.score++;
-    //   this.scoreText.setText('Score: ' + time);
-    // }, this);
-    // console.log(this.time.systems.time.systems.time.now);
-    
-
-   function updateCounter() {
-      this.score++;
-      this.scoreText.setText('Score: ' + this.score);
-    }
-    // end of create function
+    console.log('Here');
+    console.log(this.score.score);
   }
 
 
@@ -163,6 +132,4 @@ export default class GameScene extends Phaser.Scene {
       this.cars.setVelocityX(0);
     }
   }
-
-
 };
