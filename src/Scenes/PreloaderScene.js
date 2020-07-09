@@ -1,11 +1,12 @@
 import 'phaser';
-
+// import GameScene from './Scenes/GameScene';
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');
   }
 
   preload() {
+    // this.scene.add('Game', GameScene);
     // add logo image
     this.add.image(400, 200, 'logo');
 
@@ -94,6 +95,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   ready() {
+    // this.scene.start('GameOver');
     this.readyCount++;
     if (this.readyCount === 2) {
       this.scene.start('Title');

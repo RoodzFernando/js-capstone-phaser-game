@@ -1,5 +1,6 @@
 import 'phaser';
 import Button from '../Objects/Button';
+// import GameOverScene from './Scenes/GameOverScene';
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
@@ -14,18 +15,18 @@ export default class GameScene extends Phaser.Scene {
     this.cars.setScale(1.2);
     this.cars.setGravityY(300);
     // this.physics.add.existing(this.cars, true);
-      // add the borders
-    this.borders = this.add.tileSprite(this.sys.game.config.width/2, 2, 1*32, (40)*32, 'border');
-    this.borders2 = this.add.tileSprite(this.sys.game.config.width - 100, 2, 1*32, (40)*32, 'border');
-    // this.physics.add.collider(this.cars, this.borders);
-    // this.physics.add.collider(this.cars, this.borders2);
+    // add the borders
+    this.borders = this.add.tileSprite(this.sys.game.config.width / 2, 2, 1 * 32, (40) * 32, 'border');
+    this.borders2 = this.add.tileSprite(this.sys.game.config.width - 100, 2, 1 * 32, (40) * 32, 'border');
+    this.physics.add.collider(this.cars, this.borders);
+    this.physics.add.collider(this.cars, this.borders2);
     // this.borders.body.immovable =true
     // this.borders.body.collideWorldBounds = true;
     // this.borders.body.immovable = true;
     // this.borders.body.allowGravity = false;
     // this.borders.body.collideWorldBounds =  true;
     // this.borders2.body.collideWorldBounds =  true;
-    
+
     // 
     this.anims.create({
       key: 'left',
@@ -74,19 +75,17 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.cars, this.opponents);
     // this.cars.setImmovable(false);
     // populate the left side of the road circulation
-    this.leftSide = this.physics.add.group(
-      {
-        key: 'cars1',
-        frame: 1,
-        repeat: 1,
-        setXY: {
-          x: 210,
-          y: this.sys.game.config.height,
-          stepX: 125,
-          stepY: 155
-        }
+    this.leftSide = this.physics.add.group({
+      key: 'cars1',
+      frame: 1,
+      repeat: 1,
+      setXY: {
+        x: 210,
+        y: this.sys.game.config.height,
+        stepX: 125,
+        stepY: 155
       }
-    );
+    });
     // iterate
     this.leftSide.children.iterate((child) => {
       child.setScale(1.2, 1.2);
@@ -101,26 +100,60 @@ export default class GameScene extends Phaser.Scene {
       });
     });
     // collide handling
+    
     this.physics.add.overlap(this.cars, this.opponents, collideHandler, null, this);
+    this.collisionVar = true;
+
     function collideHandler(car, opponent) {
       this.physics.pause();
+      // opponent.physics.pause();
+      console.log(this.physics);
+      // this.scene.remove('Game');
+      this.scene.start('GameOver');
+      // this.time.paused = true;
+      // this.game.destroy(false, false);
+      // window.game.enable(false);
+      console.log(this.game.getTime());
       car.setTint(0xff0000);
-      this.add.text(this.sys.game.config.width / 2 -100, this.sys.game.config.height / 2 - 180, "Collision detected. Retry!", {
+      this.add.text(this.sys.game.config.width / 2 - 100, this.sys.game.config.height / 2 - 180, "Collision detected. Retry!", {
         fontSize: "15px",
         fill: "#FFF",
         fontFamily: "Cascadia Code",
         fontWeight: "bold"
       });
-      this.gameButton = new Button(this, this.sys.game.config.width / 2, this.sys.game.config.height / 2 - 100, 'blueButton1', 'blueButton2', 'Replay', 'Game');
-
     }
+
+    // update the score
+    this.score = 0;
+    this.scoreText = this.add.text(16, 16, 'score: 0', {
+      fontSize: '40px',
+      fill: '#FFF',
+      fontFamily: "Cascadia Code"
+    });
+
+    // game.time.events.loop(100, updateCounter, this);
+    // console.log(this.scene.events);
+
+    // this.scene.events.on('step', function (time, delta) {
+    //   //
+    //   this.score++;
+    //   this.scoreText.setText('Score: ' + time);
+    // }, this);
+    // console.log(this.time.systems.time.systems.time.now);
+    
+
+   function updateCounter() {
+      this.score++;
+      this.scoreText.setText('Score: ' + this.score);
+    }
+    // end of create function
   }
+
 
   update() {
     this.cursors = this.input.keyboard.createCursorKeys();
     if (this.cursors.left.isDown) {
       this.cars.setVelocityX(-160);
-
       this.cars.anims.play('left', true);
     } else if (this.cursors.right.isDown) {
       this.cars.setVelocityX(160);
@@ -131,5 +164,5 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  
+
 };
