@@ -111,7 +111,7 @@ export default class GameScene extends Phaser.Scene {
         fontWeight: "bold"
       });
       this.finalTime = Date.now();
-      this.score.score = `${Math.floor((this.finalTime - this.initialTime)/1000)} s` ;
+      this.score.score = Math.floor((this.finalTime - this.initialTime)/1000) ;
       console.log(this.score.score);
     }
     console.log('Here');
