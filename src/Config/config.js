@@ -11,7 +11,7 @@ export default {
       gravity: {
         y: 300
       },
-      debug: true
+      debug: false
     }
   },
   dom: {

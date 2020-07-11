@@ -80,6 +80,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('blueButton1', 'assets/ui/blue_button02.png');
     this.load.image('blueButton2', 'assets/ui/blue_button03.png');
     this.load.image('phaserLogo', 'assets/logo.png');
+    this.load.image('border', 'assets/platform.png');
     this.load.image('box', 'assets/ui/grey_box.png');
     this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
     this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
@@ -87,7 +88,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.spritesheet('cars', 'assets/cars.png',{frameWidth: 100, frameHeight: 150});
     this.load.spritesheet('cars1', 'assets/cars-spritesheet.png',{frameWidth: 75, frameHeight: 100});
     this.load.spritesheet('oppositeCar', 'assets/car-truck3.png',{frameWidth: 75, frameHeight: 100});
-    this.load.spritesheet('border', 'assets/1.png',{frameWidth: 75, frameHeight: 100});
+    // this.load.spritesheet('border', 'assets/1.png',{frameWidth: 75, frameHeight: 100});
   }
 
   init() {

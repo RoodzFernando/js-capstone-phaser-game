@@ -17,10 +17,14 @@ export default class GameScene extends Phaser.Scene {
     this.cars.setGravityY(300);
 
     // add the borders
-    this.borders = this.add.tileSprite(this.sys.game.config.width / 2, 2, 1 * 32, (40) * 32, 'border');
-    this.borders2 = this.add.tileSprite(this.sys.game.config.width - 100, 2, 1 * 32, (40) * 32, 'border');
-    this.physics.add.staticGroup(this.borders);
-    //
+    this.borders = this.physics.add.staticGroup();
+    // left
+    // this.borders.create(this.sys.game.config.width / 2, this.sys.game.config.height-100, 'border');
+    // this.borders.create(this.sys.game.config.width / 2, this.sys.game.config.height - 450, 'border');
+    // right
+    this.borders.create(this.sys.game.config.width - 100, this.sys.game.config.height - 100, 'border');
+    this.borders.create(this.sys.game.config.width - 100, this.sys.game.config.height - 450, 'border');
+    
     this.anims.create({
       key: 'left',
       frames: [{
@@ -95,6 +99,7 @@ export default class GameScene extends Phaser.Scene {
     // collide handling
 
     this.physics.add.overlap(this.cars, this.opponents, collideHandler, null, this);
+    this.physics.add.overlap(this.cars, this.borders, collideHandler, null, this);
     let collisionVar = false;
     this.initialTime = Date.now();
     this.gameDuration;
