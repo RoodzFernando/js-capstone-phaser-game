@@ -85,9 +85,9 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
     this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
     this.load.image('road', 'assets/highway.png');
-    this.load.spritesheet('cars', 'assets/cars.png',{frameWidth: 100, frameHeight: 150});
-    this.load.spritesheet('cars1', 'assets/cars-spritesheet.png',{frameWidth: 75, frameHeight: 100});
-    this.load.spritesheet('oppositeCar', 'assets/car-truck3.png',{frameWidth: 75, frameHeight: 100});
+    // this.load.spritesheet('cars', 'assets/cars.png',{frameWidth: 150, frameHeight: 250});
+    this.load.spritesheet('cars1', 'assets/cars-spritesheet.png',{frameWidth: 76, frameHeight: 127});
+    // this.load.spritesheet('oppositeCar', 'assets/car-truck3.png',{frameWidth: 75, frameHeight: 100});
     // this.load.spritesheet('border', 'assets/1.png',{frameWidth: 75, frameHeight: 100});
   }
 

@@ -9,7 +9,7 @@ export default class GameScene extends Phaser.Scene {
   create() {
     this.score = this.sys.game.globals.score;
     this.add.image(400, 300, 'road');
-    this.cars = this.physics.add.sprite((this.sys.game.config.width / 2) + 65, 450, 'cars1');
+    this.cars = this.physics.add.sprite((this.sys.game.config.width / 2) + 65, 440, 'cars1');
 
 
     this.cars.setCollideWorldBounds(true);
@@ -19,12 +19,12 @@ export default class GameScene extends Phaser.Scene {
     // add the borders
     this.borders = this.physics.add.staticGroup();
     // left
-    // this.borders.create(this.sys.game.config.width / 2, this.sys.game.config.height-100, 'border');
-    // this.borders.create(this.sys.game.config.width / 2, this.sys.game.config.height - 450, 'border');
+    this.borders.create(110, this.sys.game.config.height-100, 'border');
+    this.borders.create(110, this.sys.game.config.height - 450, 'border');
     // right
     this.borders.create(this.sys.game.config.width - 100, this.sys.game.config.height - 100, 'border');
     this.borders.create(this.sys.game.config.width - 100, this.sys.game.config.height - 450, 'border');
-    
+
     this.anims.create({
       key: 'left',
       frames: [{
@@ -42,69 +42,118 @@ export default class GameScene extends Phaser.Scene {
       }],
       frameRate: 20
     });
-    // populate the colliding cars
-    this.opponents = this.physics.add.group({
+// first opponent
+    this.opponents1 = this.physics.add.group({
       key: 'cars1',
-      frame: 3,
-      repeat: 1,
+      frame: Phaser.Math.Between(0, 4),
+      repeat: 0,
       setXY: {
         x: 470,
-        y: 0,
-        stepX: 125,
+        y: -650,
+        // stepX: 125,
         // stepY: 155
       }
     });
-    this.opponents.angle(180);
-    this.opponents.children.iterate((child) => {
+    this.opponents1.angle(180);
+    // this.opponents1.setSize(2);
+    // console.log(this.opponents1);
+    this.opponents1.children.iterate((child) => {
+      child.setScale(1.2, 1.2);
+      child.setVelocityY(200);
+      this.tweens.add({
+        targets: child,
+        y: this.sys.game.config.height,
+        duration: 4500,
+        ease: "Linear",
+        yoyo: false,
+        loop: -1
+      });
+    });
+    // second opponent
+    this.opponents2 = this.physics.add.group({
+      key: 'cars1',
+      frame: Phaser.Math.Between(0, 4),
+      repeat: 0,
+      setXY: {
+        x: 600,
+        y: -280,
+        // offset: -1000
+        // stepX: 125,
+      }
+    });
+    this.opponents2.angle(180);
+    this.opponents2.children.iterate((child) => {
+      child.setScale(1.2, 1.2);
+      child.setVelocityY(200);
+      this.tweens.add({
+        targets: child,
+        y: this.sys.game.config.height,
+        duration: 5600,
+        ease: "Linear",
+        yoyo: false,
+        loop: -1
+      });
+    });
+    // third opponent
+    this.opponents3 = this.physics.add.group({
+      key: 'cars1',
+      frame: Phaser.Math.Between(0, 4),
+      repeat: 0,
+      setXY: {
+        x: 210,
+        y: -650,
+        // stepX: 125,
+        // stepY: 155
+      }
+    });
+    this.opponents3.angle(180);
+    this.opponents3.children.iterate((child) => {
+      child.setScale(1.2, 1.2);
+      child.setVelocityY(200);
+      this.tweens.add({
+        targets: child,
+        y: this.sys.game.config.height,
+        duration: 4500,
+        ease: "Linear",
+        yoyo: false,
+        loop: -1
+      });
+    });
+    // fourth opponent
+    
+    this.opponents4 = this.physics.add.group({
+      key: 'cars1',
+      frame: Phaser.Math.Between(0, 4),
+      repeat: 0,
+      setXY: {
+        x: 345,
+        y: -680,
+        // offset: -10
+        // stepX: 125,
+        // stepY: 155
+      }
+    });
+    this.opponents4.angle(180);
+    this.opponents4.children.iterate((child) => {
       child.setScale(1.2, 1.2);
       child.setVelocityY(200);
       this.tweens.add({
         targets: child,
         y: this.sys.game.config.height,
         duration: 3800,
-        // loopDelay: 1000,
-        // ease: "Power2",
         ease: "Linear",
         yoyo: false,
-        loop: -1
+        loop: -1,
+        // offset: 200
       });
     });
-    this.physics.add.collider(this.cars, this.opponents);
-    // this.cars.setImmovable(false);
-    // populate the left side of the road circulation
-    this.leftSide = this.physics.add.group({
-      key: 'cars1',
-      frame: 1,
-      repeat: 1,
-      setXY: {
-        x: 210,
-        y: this.sys.game.config.height,
-        stepX: 125,
-        stepY: 155
-      }
-    });
-    // iterate
-    this.leftSide.children.iterate((child) => {
-      child.setScale(1.2, 1.2);
-      child.body.setGravityY(5000);
-      this.tweens.add({
-        targets: child,
-        y: -this.sys.game.config.height + 400,
-        duration: 3800,
-        ease: "Linear",
-        yoyo: false,
-        loop: -1
-      });
-    });
-    // collide handling
-
-    this.physics.add.overlap(this.cars, this.opponents, collideHandler, null, this);
-    this.physics.add.overlap(this.cars, this.borders, collideHandler, null, this);
+   
     let collisionVar = false;
     this.initialTime = Date.now();
     this.gameDuration;
 
     function collideHandler(car, opponent) {
+      console.log(Phaser.Math.Between(0,4));
       this.physics.pause();
       this.scene.start('GameOver');
       collisionVar = true;
@@ -117,20 +166,27 @@ export default class GameScene extends Phaser.Scene {
       });
       this.finalTime = Date.now();
       this.score.score = Math.floor((this.finalTime - this.initialTime)/1000) ;
-      console.log(this.score.score);
+      // console.log(this.score.score);
     }
-    console.log('Here');
-    console.log(this.score.score);
+
+     // collide handling
+    //  this.physics.add.overlap(this.cars, this.opponents1, collideHandler, null, this);
+    //  this.physics.add.overlap(this.cars, this.opponents2, collideHandler, null, this);
+    //  this.physics.add.overlap(this.cars, this.opponents3, collideHandler, null, this);
+    //  this.physics.add.overlap(this.cars, this.opponents4, collideHandler, null, this);
+     this.physics.add.overlap(this.cars, this.borders, collideHandler, null, this);
+    // console.log('Here');
+    // console.log(this.score.score);
   }
 
 
   update() {
     this.cursors = this.input.keyboard.createCursorKeys();
     if (this.cursors.left.isDown) {
-      this.cars.setVelocityX(-160);
+      this.cars.setVelocityX(-250);
       this.cars.anims.play('left', true);
     } else if (this.cursors.right.isDown) {
-      this.cars.setVelocityX(160);
+      this.cars.setVelocityX(250);
 
       this.cars.anims.play('right', true);
     } else {
