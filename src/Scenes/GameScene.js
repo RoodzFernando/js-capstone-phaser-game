@@ -1,5 +1,6 @@
 import 'phaser';
 import Button from '../Objects/Button';
+import localStorage, { storeScore } from '../localStorage';
 // import GameOverScene from './Scenes/GameOverScene';
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -19,7 +20,7 @@ export default class GameScene extends Phaser.Scene {
     // add the borders
     this.borders = this.physics.add.staticGroup();
     // left
-    this.borders.create(110, this.sys.game.config.height-100, 'border');
+    this.borders.create(110, this.sys.game.config.height - 100, 'border');
     this.borders.create(110, this.sys.game.config.height - 450, 'border');
     // right
     this.borders.create(this.sys.game.config.width - 100, this.sys.game.config.height - 100, 'border');
@@ -42,7 +43,7 @@ export default class GameScene extends Phaser.Scene {
       }],
       frameRate: 20
     });
-// first opponent
+    // first opponent
     this.opponents1 = this.physics.add.group({
       key: 'cars1',
       frame: Phaser.Math.Between(0, 4),
@@ -120,7 +121,7 @@ export default class GameScene extends Phaser.Scene {
       });
     });
     // fourth opponent
-    
+
     this.opponents4 = this.physics.add.group({
       key: 'cars1',
       frame: Phaser.Math.Between(0, 4),
@@ -147,13 +148,13 @@ export default class GameScene extends Phaser.Scene {
         // offset: 200
       });
     });
-   
+
     let collisionVar = false;
     this.initialTime = Date.now();
     this.gameDuration;
 
-    function collideHandler(car, opponent) {
-      console.log(Phaser.Math.Between(0,4));
+    function collisionHandler(car, opponent) {
+      // console.log(Phaser.Math.Between(0,4));
       this.physics.pause();
       this.scene.start('GameOver');
       collisionVar = true;
@@ -165,18 +166,21 @@ export default class GameScene extends Phaser.Scene {
         fontWeight: "bold"
       });
       this.finalTime = Date.now();
-      this.score.score = Math.floor((this.finalTime - this.initialTime)/1000) ;
-      // console.log(this.score.score);
+      this.score.score = Math.floor((this.finalTime - this.initialTime) / 1000);
+      // console.log(typeof this.score.score);
+      storeScore(this.score.score);
     }
 
-     // collide handling
-    //  this.physics.add.overlap(this.cars, this.opponents1, collideHandler, null, this);
-    //  this.physics.add.overlap(this.cars, this.opponents2, collideHandler, null, this);
-    //  this.physics.add.overlap(this.cars, this.opponents3, collideHandler, null, this);
-    //  this.physics.add.overlap(this.cars, this.opponents4, collideHandler, null, this);
-     this.physics.add.overlap(this.cars, this.borders, collideHandler, null, this);
+    // collide handling
+    this.physics.add.overlap(this.cars, this.opponents1, collisionHandler, null, this);
+    //  this.physics.add.overlap(this.cars, this.opponents2, collisionHandler, null, this);
+    //  this.physics.add.overlap(this.cars, this.opponents3, collisionHandler, null, this);
+    //  this.physics.add.overlap(this.cars, this.opponents4, collisionHandler, null, this);
+    this.physics.add.overlap(this.cars, this.borders, collisionHandler, null, this);
     // console.log('Here');
-    // console.log(this.score.score);
+    // test.destroy();
+    // this.physics.removeCollider(test);
+
   }
 
 
@@ -187,7 +191,6 @@ export default class GameScene extends Phaser.Scene {
       this.cars.anims.play('left', true);
     } else if (this.cursors.right.isDown) {
       this.cars.setVelocityX(250);
-
       this.cars.anims.play('right', true);
     } else {
       this.cars.setVelocityX(0);
