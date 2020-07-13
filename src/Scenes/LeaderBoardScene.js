@@ -1,7 +1,7 @@
 import 'phaser';
 import GameScene from '../Scenes/GameOverScene';
 import {
-  getScoreBoard
+  getScoreBoard, createGame
 } from "../api";
 import Button from "../Objects/Button";
 
@@ -39,7 +39,7 @@ export default class LeaderBoardScene extends Phaser.Scene {
       this.displayData.push(this.getItem(score));
       let textName = [];
       for (let i = 0; i < 5; i += 1) {
-        this.add.text(155, 100 + (i * 50), `${i + 1}- ${this.displayData[0][i][0]} --- ${this.displayData[0][i][1]}`, {
+        this.add.text(155, 100 + (i * 50), `${i + 1}- ${this.displayData[0][i][0].toUpperCase()} --- ${this.displayData[0][i][1]}`, {
           fontSize: "45px",
           fill: "#FFF"
         });

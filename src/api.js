@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 
 const createGame = async () => {
   const game = {
-    name: 'Safe Driving',
+    name: 'Clash of cars',
   };
   const post = JSON.stringify(game);
   const address = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';
@@ -21,7 +21,7 @@ const createGame = async () => {
   console.log(result);
   return result;
 };
-const ID = 'YascFKLp67YOeg65pwp7';
+const ID = 'Yl2GhSyLcSxu1uOnNdaE';
 const submitScore = async (name, score) => {
   const submit = {
     user: name,
