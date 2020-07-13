@@ -24,10 +24,13 @@
     "babel-preset-env": "^1.0.0",
     "copy-webpack-plugin": "^4.5.1",
     "raw-loader": "^0.5.1",
-    "webpack": "^3.0.0",
+    "webpack": "3.0.0",
     "webpack-dev-server": "^2.0.0"
   },
   "dependencies": {
-    "phaser": "^3.0.0"
+    "bootstrap": "^4.4.1",
+    "node-fetch": "^2.6.0",
+    "phaser": "^3.0.0",
+    "regenerator-runtime": "^0.13.5"
   }
 }
