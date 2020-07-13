@@ -1,6 +1,5 @@
 body {
   background-color: grey;
-  /* display: block; */
   margin: 0;
   display: flex;
 }
@@ -25,11 +24,9 @@ canvas {
 
 .score-form {
   text-align: center;
-  /* position: static; */
 }
 
 .form-control {
-  /* background-color: black; */
   height: 30px;
   width: 200px;
   padding: 6px;

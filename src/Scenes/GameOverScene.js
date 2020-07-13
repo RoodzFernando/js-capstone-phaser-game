@@ -12,13 +12,11 @@ export default class GameOverScene extends Phaser.Scene {
   create() {
     let score = getCurrentScore();
     this.score = this.sys.game.globals.score;
-    // this.add.image(400, 300, 'road');
     this.add.text(this.sys.game.config.width / 2 - 65, 100, "Game Over", {
       fontSize: "40px",
       fontFamily: "Cascadia Code",
       fill: "#FFF"
     });
-    // this.gameButton = new Button(this, this.sys.game.config.width / 2, this.sys.game.config.height / 2 - 100, 'blueButton1', 'blueButton2', 'Restart', 'Game');
     this.scoreText = this.add.text(150 , 190, ` Nice effort you scored ${this.score.score}.\n Add your initial to submit your score.`, {
       fontSize: '25px',
       fill: '#FFF',
