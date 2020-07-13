@@ -8,8 +8,10 @@ import OptionsScene from './Scenes/OptionsScene';
 import CreditsScene from './Scenes/CreditsScene';
 import GameOverScene from './Scenes/GameOverScene';
 import LeaderBoardScene from './Scenes/LeaderBoardScene';
+import IntroductionScene from "./Scenes/IntroductionScene";
 import Model from './Model';
 import Score from './Score';
+import css from '../src/style.css';
 
 class Game extends Phaser.Game {
   constructor() {
@@ -18,6 +20,7 @@ class Game extends Phaser.Game {
     const score = new Score();
     this.globals = { model, score, bgMusic: null };
     this.scene.add('Boot', BootScene);
+    this.scene.add('Introduction', IntroductionScene);
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('Title', TitleScene);
     this.scene.add('Options', OptionsScene);
@@ -26,7 +29,6 @@ class Game extends Phaser.Game {
     this.scene.add('GameOver', GameOverScene);
     this.scene.add('LeaderBoard', LeaderBoardScene);
     this.scene.start('Boot');
-    // this.scene.start('GameScene');
   }
 }
 

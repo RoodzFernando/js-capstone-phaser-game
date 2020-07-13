@@ -1,16 +1,12 @@
 import 'phaser';
-// import GameScene from './Scenes/GameScene';
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');
   }
 
   preload() {
-    // this.scene.add('Game', GameScene);
-    // add logo image
     this.add.image(400, 200, 'logo');
 
-    // display progress bar
     var progressBar = this.add.graphics();
     var progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
@@ -51,7 +47,6 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     assetText.setOrigin(0.5, 0.5);
 
-    // update progress bar
     this.load.on('progress', function (value) {
       percentText.setText(parseInt(value * 100) + '%');
       progressBar.clear();
@@ -59,12 +54,10 @@ export default class PreloaderScene extends Phaser.Scene {
       progressBar.fillRect(250, 280, 300 * value, 30);
     });
 
-    // update file progress text
     this.load.on('fileprogress', function (file) {
       assetText.setText('Loading asset: ' + file.key);
     });
 
-    // remove progress bar when complete
   this.load.on('complete', function () {
     progressBar.destroy();
     progressBox.destroy();
@@ -76,7 +69,6 @@ export default class PreloaderScene extends Phaser.Scene {
 
   this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
-    // load assets needed in our game
     this.load.image('blueButton1', 'assets/ui/blue_button02.png');
     this.load.image('blueButton2', 'assets/ui/blue_button03.png');
     this.load.image('phaserLogo', 'assets/logo.png');
@@ -85,10 +77,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
     this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
     this.load.image('road', 'assets/highway.png');
-    // this.load.spritesheet('cars', 'assets/cars.png',{frameWidth: 150, frameHeight: 250});
     this.load.spritesheet('cars1', 'assets/cars-spritesheet.png',{frameWidth: 76, frameHeight: 127});
-    // this.load.spritesheet('oppositeCar', 'assets/car-truck3.png',{frameWidth: 75, frameHeight: 100});
-    // this.load.spritesheet('border', 'assets/1.png',{frameWidth: 75, frameHeight: 100});
   }
 
   init() {
@@ -96,10 +85,9 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   ready() {
-    // this.scene.start('GameOver');
     this.readyCount++;
     if (this.readyCount === 2) {
-      this.scene.start('Title');
+      this.scene.start('Introduction');
     }
   }
   create() {}

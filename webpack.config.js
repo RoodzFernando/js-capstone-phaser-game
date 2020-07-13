@@ -16,6 +16,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src/'),
         use: {
