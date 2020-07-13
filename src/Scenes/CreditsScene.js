@@ -1,4 +1,5 @@
 import 'phaser';
+import { Display } from 'phaser';
 
 export default class CreditsScene extends Phaser.Scene {
   constructor() {
@@ -10,14 +11,24 @@ export default class CreditsScene extends Phaser.Scene {
       fontSize: '32px',
       fill: '#fff'
     });
-    this.madeByText = this.add.text(0, 0, 'Created By: Roodz Fernando Fleurant', {
+    this.madeByText = this.add.text(0, 0, ' Created By: Roodz Fernando Fleurant', {
       fontSize: '26px',
       fill: '#fff'
     });
+
+    this.projectText = this.add.text(0, 0, 'A Javascript Capstone project using Phaser 3', {
+      fontSize: '26px',
+      fill: '#fff'
+    })
     this.zone = this.add.zone(this.sys.game.config.width / 2, this.sys.game.config.height / 2, this.sys.game.config.width, this.sys.game.config.height);
 
     Phaser.Display.Align.In.Center(
       this.creditsText,
+      this.zone
+    );
+
+    Phaser.Display.Align.In.Center(
+      this.projectText,
       this.zone
     );
 
@@ -27,6 +38,7 @@ export default class CreditsScene extends Phaser.Scene {
     );
 
     this.madeByText.setY(1000);
+    this.projectText.setY(2000);
 
     this.creditsTween = this.tweens.add({
       targets: this.creditsText,
@@ -34,6 +46,16 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 3000,
       delay: 1000,
+      onComplete: function () {
+        this.destroy;
+      }
+    });
+    this.projectText = this.tweens.add({
+      targets: this.projectText,
+      y: -400,
+      ease: 'Power1',
+      duration: 6000,
+      delay: 3000,
       onComplete: function () {
         this.destroy;
       }

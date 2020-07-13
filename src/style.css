@@ -1,7 +1,6 @@
 body {
   background-color: grey;
-  margin: 0;
-  display: flex;
+  display: flex; 
 }
 
 canvas {

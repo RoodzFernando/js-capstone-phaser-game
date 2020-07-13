@@ -11,7 +11,7 @@ export default class IntroductionScene extends Phaser.Scene {
       fontSize: '32px',
       fill: '#fff'
     });
-    this.madeByText = this.add.text(0, 0, ' Meet Albert, in a lack moment of attention,\n entered the wrong lane of the road.\n Please help him to make it out of that bad\n situation. Use the arrow left and right to\n avoid the opposite cars.', {
+    this.madeByText = this.add.text(0, 0, ' Meet Albert, in a lack of attention moment,\n entered the wrong lane of the road.\n Please help him to make it out of that bad\n situation. Use the arrow left and right to\n avoid the opposite cars.', {
       fontSize: '26px',
       fill: '#fff'
     });
