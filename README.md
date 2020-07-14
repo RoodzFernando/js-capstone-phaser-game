@@ -1,6 +1,6 @@
 # 1. Getting started: Description about the project and features
 
-### This project is a simplistic game building Phaser 3 game engine.
+### This project is a simplistic game building with Phaser 3 game engine.
 
 # 2. Built with
 
