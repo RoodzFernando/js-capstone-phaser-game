@@ -1,6 +1,6 @@
 body {
   background-color: grey;
-  display: flex; 
+  display: flex;
 }
 
 canvas {
@@ -18,7 +18,7 @@ canvas {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-      box-shadow: 1px 1px 2px 1px;
+  box-shadow: 1px 1px 2px 1px;
 }
 
 .score-form {
@@ -39,5 +39,5 @@ canvas {
   background-color: #023e8a;
   border-color: #023e8a;
   color: #fff;
-  box-shadow: 0px 0px 2px 0px #fff;
+  box-shadow: 0 0 2px 0 #fff;
 }
