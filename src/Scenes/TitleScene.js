@@ -1,5 +1,6 @@
 import 'phaser';
 import Button from '../Objects/Button';
+
 export default class TitleScene extends Phaser.Scene {
   constructor() {
     super('Title');
@@ -18,11 +19,11 @@ export default class TitleScene extends Phaser.Scene {
     if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
       this.bgMusic = this.sound.add('bgMusic', {
         volume: 0.5,
-        loop: true
+        loop: true,
       });
       this.bgMusic.play();
       this.model.bgMusicPlaying = true;
       this.sys.game.globals.bgMusic = this.bgMusic;
     }
   }
-};
+}

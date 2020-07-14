@@ -9,12 +9,12 @@ export default {
     default: 'arcade',
     arcade: {
       gravity: {
-        y: 5
+        y: 5,
       },
-      debug: false
-    }
+      debug: false,
+    },
   },
   dom: {
-    createContainer: true
+    createContainer: true,
   },
 };

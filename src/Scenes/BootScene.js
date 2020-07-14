@@ -6,10 +6,10 @@ export default class BootScene extends Phaser.Scene {
   }
 
   preload() {
-   this.load.image('logo', 'assets/carlogo.png');
- }
+    this.load.image('logo', 'assets/carlogo.png');
+  }
 
- create() {
-   this.scene.start('Preloader');
- }
-};
+  create() {
+    this.scene.start('Preloader');
+  }
+}

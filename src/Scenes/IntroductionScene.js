@@ -9,22 +9,22 @@ export default class IntroductionScene extends Phaser.Scene {
   create() {
     this.creditsText = this.add.text(0, 0, 'Clash Against the clock...', {
       fontSize: '32px',
-      fill: '#fff'
+      fill: '#fff',
     });
     this.madeByText = this.add.text(0, 0, ' Meet Albert, in a lack of attention moment,\n entered the wrong lane of the road.\n Please help him to make it out of that bad\n situation. Use the arrow left and right to\n avoid the opposite cars.', {
       fontSize: '26px',
-      fill: '#fff'
+      fill: '#fff',
     });
     this.zone = this.add.zone(this.sys.game.config.width / 2, this.sys.game.config.height / 2, this.sys.game.config.width, this.sys.game.config.height);
 
     Phaser.Display.Align.In.Center(
       this.creditsText,
-      this.zone
+      this.zone,
     );
 
     Phaser.Display.Align.In.Center(
       this.madeByText,
-      this.zone
+      this.zone,
     );
 
     this.madeByText.setY(1000);
@@ -35,9 +35,9 @@ export default class IntroductionScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 3000,
       delay: 1000,
-      onComplete: function () {
+      onComplete() {
         this.destroy;
-      }
+      },
     });
 
     this.madeByTween = this.tweens.add({
@@ -49,11 +49,10 @@ export default class IntroductionScene extends Phaser.Scene {
       onComplete: function () {
         this.madeByTween.destroy;
         this.scene.start('Title');
-      }.bind(this)
+      }.bind(this),
     });
 
     // button
-        this.gameButton = new Button(this, this.sys.game.config.width - 150, this.sys.game.config.height - 100, 'blueButton1', 'blueButton2', 'Skip', 'Title');
-
+    this.gameButton = new Button(this, this.sys.game.config.width - 150, this.sys.game.config.height - 100, 'blueButton1', 'blueButton2', 'Skip', 'Title');
   }
-};
+}

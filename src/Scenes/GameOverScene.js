@@ -1,6 +1,6 @@
 import 'phaser';
 import Button from '../Objects/Button';
-import {createGame, submitScore} from '../api';
+import { createGame, submitScore } from '../api';
 import { getCurrentScore } from '../localStorage';
 
 export default class GameOverScene extends Phaser.Scene {
@@ -9,18 +9,19 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   preload() {}
+
   create() {
-    let score = getCurrentScore();
+    const score = getCurrentScore();
     this.score = this.sys.game.globals.score;
-    this.add.text(this.sys.game.config.width / 2 - 65, 100, "Game Over", {
-      fontSize: "40px",
-      fontFamily: "Cascadia Code",
-      fill: "#FFF"
+    this.add.text(this.sys.game.config.width / 2 - 65, 100, 'Game Over', {
+      fontSize: '40px',
+      fontFamily: 'Cascadia Code',
+      fill: '#FFF',
     });
-    this.scoreText = this.add.text(150 , 190, ` Nice effort you scored ${this.score.score}.\n Add your initial to submit your score.`, {
+    this.scoreText = this.add.text(150, 190, ` Nice effort you scored ${this.score.score}.\n Add your initial to submit your score.`, {
       fontSize: '25px',
       fill: '#FFF',
-      fontFamily: "Cascadia Code"
+      fontFamily: 'Cascadia Code',
     });
     const div = document.createElement('div');
     div.setAttribute('class', 'score-form');

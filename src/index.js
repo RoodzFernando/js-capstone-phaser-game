@@ -8,10 +8,10 @@ import OptionsScene from './Scenes/OptionsScene';
 import CreditsScene from './Scenes/CreditsScene';
 import GameOverScene from './Scenes/GameOverScene';
 import LeaderBoardScene from './Scenes/LeaderBoardScene';
-import IntroductionScene from "./Scenes/IntroductionScene";
+import IntroductionScene from './Scenes/IntroductionScene';
 import Model from './Model';
 import Score from './Score';
-import css from '../src/style.css';
+import css from './style.css';
 
 class Game extends Phaser.Game {
   constructor() {

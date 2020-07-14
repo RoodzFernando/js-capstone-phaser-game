@@ -1,7 +1,8 @@
 import 'phaser';
 import {
-  storeScore
+  storeScore,
 } from '../localStorage';
+
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
@@ -24,11 +25,11 @@ export default class GameScene extends Phaser.Scene {
       this.scene.start('GameOver');
       collisionVar = true;
       car.setTint(0xff0000);
-      this.add.text(this.sys.game.config.width / 2 - 100, this.sys.game.config.height / 2 - 180, "Collision detected. Retry!", {
-        fontSize: "15px",
-        fill: "#FFF",
-        fontFamily: "Cascadia Code",
-        fontWeight: "bold"
+      this.add.text(this.sys.game.config.width / 2 - 100, this.sys.game.config.height / 2 - 180, 'Collision detected. Retry!', {
+        fontSize: '15px',
+        fill: '#FFF',
+        fontFamily: 'Cascadia Code',
+        fontWeight: 'bold',
       });
       this.finalTime = Date.now();
       this.score.score = Math.floor((this.finalTime - this.initialTime) / 1000);
@@ -42,6 +43,7 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.overlap(this.cars, this.opponents4, collisionHandler, null, this);
     this.physics.add.overlap(this.cars, this.borders, collisionHandler, null, this);
   }
+
   addCars() {
     this.cars = this.physics.add.sprite((this.sys.game.config.width / 2) + 65, 440, 'cars1');
     this.cars.setCollideWorldBounds(true);
@@ -63,18 +65,18 @@ export default class GameScene extends Phaser.Scene {
       key: 'left',
       frames: [{
         key: 'cars1',
-        frame: 0
+        frame: 0,
       }],
-      frameRate: 20
+      frameRate: 20,
     });
 
     this.anims.create({
       key: 'right',
       frames: [{
         key: 'cars1',
-        frame: 0
+        frame: 0,
       }],
-      frameRate: 20
+      frameRate: 20,
     });
   }
 
@@ -86,7 +88,7 @@ export default class GameScene extends Phaser.Scene {
       setXY: {
         x: 470,
         y: -650,
-      }
+      },
     });
     this.opponents1.angle(180);
     this.opponents1.children.iterate((child) => {
@@ -96,9 +98,9 @@ export default class GameScene extends Phaser.Scene {
         targets: child,
         y: this.sys.game.config.height,
         duration: 4500,
-        ease: "Linear",
+        ease: 'Linear',
         yoyo: false,
-        loop: -1
+        loop: -1,
       });
     });
 
@@ -109,7 +111,7 @@ export default class GameScene extends Phaser.Scene {
       setXY: {
         x: 600,
         y: -280,
-      }
+      },
     });
     this.opponents2.angle(180);
     this.opponents2.children.iterate((child) => {
@@ -119,9 +121,9 @@ export default class GameScene extends Phaser.Scene {
         targets: child,
         y: this.sys.game.config.height,
         duration: 6600,
-        ease: "Linear",
+        ease: 'Linear',
         yoyo: false,
-        loop: -1
+        loop: -1,
       });
     });
 
@@ -132,7 +134,7 @@ export default class GameScene extends Phaser.Scene {
       setXY: {
         x: 210,
         y: -650,
-      }
+      },
     });
     this.opponents3.angle(180);
     this.opponents3.children.iterate((child) => {
@@ -142,9 +144,9 @@ export default class GameScene extends Phaser.Scene {
         targets: child,
         y: this.sys.game.config.height,
         duration: 4500,
-        ease: "Linear",
+        ease: 'Linear',
         yoyo: false,
-        loop: -1
+        loop: -1,
       });
     });
 
@@ -155,7 +157,7 @@ export default class GameScene extends Phaser.Scene {
       setXY: {
         x: 345,
         y: -680,
-      }
+      },
     });
     this.opponents4.angle(180);
     this.opponents4.children.iterate((child) => {
@@ -165,7 +167,7 @@ export default class GameScene extends Phaser.Scene {
         targets: child,
         y: this.sys.game.config.height,
         duration: 4800,
-        ease: "Linear",
+        ease: 'Linear',
         yoyo: false,
         loop: -1,
       });
@@ -185,4 +187,4 @@ export default class GameScene extends Phaser.Scene {
       this.cars.setVelocityX(0);
     }
   }
-};
+}
