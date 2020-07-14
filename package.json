@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "webpack"
+    "build": "webpack",
+    "test": "jest",
+    "watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
     "babel-preset-env": "^1.0.0",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^3.6.0",
+    "jest": "^26.1.0",
     "raw-loader": "^0.5.1",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.2",
