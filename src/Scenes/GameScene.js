@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import {
   storeScore,
 } from '../localStorage';
@@ -16,14 +16,11 @@ export default class GameScene extends Phaser.Scene {
     this.animationHandler();
     this.carSimulation();
 
-    let collisionVar = false;
     this.initialTime = Date.now();
-    this.gameDuration;
 
-    function collisionHandler(car, opponent) {
+    function collisionHandler(car) {
       this.physics.pause();
       this.scene.start('GameOver');
-      collisionVar = true;
       car.setTint(0xff0000);
       this.add.text(this.sys.game.config.width / 2 - 100, this.sys.game.config.height / 2 - 180, 'Collision detected. Retry!', {
         fontSize: '15px',

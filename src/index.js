@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import config from './Config/config';
 import GameScene from './Scenes/GameScene';
 import BootScene from './Scenes/BootScene';
@@ -11,7 +11,7 @@ import LeaderBoardScene from './Scenes/LeaderBoardScene';
 import IntroductionScene from './Scenes/IntroductionScene';
 import Model from './Model';
 import Score from './Score';
-import css from './style.css';
+import './style.css';
 
 class Game extends Phaser.Game {
   constructor() {

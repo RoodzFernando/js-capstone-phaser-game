@@ -1,4 +1,8 @@
-import 'phaser';
+/* eslint-disable func-names */
+/* eslint-disable no-unused-expressions */
+/* eslint max-len: [2, 250, 4] */
+
+import Phaser from 'phaser';
 import Button from '../Objects/Button';
 
 export default class IntroductionScene extends Phaser.Scene {

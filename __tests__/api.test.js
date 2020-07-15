@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-restricted-globals */
 describe('submit a score if input are valid', () => {
   test('submit score to the Api if input is valid', () => {
     const dataMock = jest.fn();

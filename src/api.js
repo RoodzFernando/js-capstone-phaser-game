@@ -18,7 +18,6 @@ const createGame = async () => {
   };
   const response = await fetch(address, settings);
   const result = await response.json();
-  console.log(result);
   return result;
 };
 const ID = 'Yl2GhSyLcSxu1uOnNdaE';

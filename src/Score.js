@@ -1,3 +1,5 @@
+/* eslint no-underscore-dangle: [2, { "allowAfterThis": true }] */
+
 export default class Score {
   constructor() {
     this._score = 0;

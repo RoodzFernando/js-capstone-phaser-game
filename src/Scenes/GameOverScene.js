@@ -1,14 +1,12 @@
-import 'phaser';
-import Button from '../Objects/Button';
-import { createGame, submitScore } from '../api';
+import Phaser from 'phaser';
+import '../Objects/Button';
+import { submitScore } from '../api';
 import { getCurrentScore } from '../localStorage';
 
 export default class GameOverScene extends Phaser.Scene {
   constructor() {
     super('GameOver');
   }
-
-  preload() {}
 
   create() {
     const score = getCurrentScore();

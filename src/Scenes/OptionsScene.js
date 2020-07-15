@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import Button from '../Objects/Button';
 
 export default class OptionsScene extends Phaser.Scene {
@@ -6,13 +6,8 @@ export default class OptionsScene extends Phaser.Scene {
     super('Options');
   }
 
-  preload() {}
-
   create() {
-    // this.musicOn = true;
-    // this.soundOn = true;
     this.model = this.sys.game.globals.model;
-    console.log(this.sys.game.globals);
     this.text = this.add.text(300, 100, 'Options', {
       fontSize: 40,
     });

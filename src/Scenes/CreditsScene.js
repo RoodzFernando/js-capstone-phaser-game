@@ -1,5 +1,9 @@
-import { Display } from 'phaser';
+/* eslint-disable func-names */
+/* eslint-disable no-unused-expressions */
+// eslint-disable-next-line func-names
+/* eslint max-len: [2, 153, 4] */
 
+import Phaser from 'phaser';
 
 export default class CreditsScene extends Phaser.Scene {
   constructor() {
