@@ -44,7 +44,6 @@ export default class GameScene extends Phaser.Scene {
   addCars() {
     this.cars = this.physics.add.sprite((this.sys.game.config.width / 2) + 65, 440, 'cars1');
     this.cars.setCollideWorldBounds(true);
-    this.cars.setScale(1.2);
     this.cars.setGravityY(300);
     return this.cars;
   }
@@ -58,6 +57,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   animationHandler() {
+    this.frame = Phaser.Math.Between(0, 4);
     this.anims.create({
       key: 'left',
       frames: [{
@@ -80,7 +80,7 @@ export default class GameScene extends Phaser.Scene {
   carSimulation() {
     this.opponents1 = this.physics.add.group({
       key: 'cars1',
-      frame: Phaser.Math.Between(0, 4) + 1,
+      frame: this.frame < 4 ? this.frame + 1 : this.frame,
       repeat: 0,
       setXY: {
         x: 470,
@@ -89,7 +89,6 @@ export default class GameScene extends Phaser.Scene {
     });
     this.opponents1.angle(180);
     this.opponents1.children.iterate((child) => {
-      child.setScale(1.2, 1.2);
       child.setVelocityY(200);
       this.tweens.add({
         targets: child,
@@ -103,7 +102,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.opponents2 = this.physics.add.group({
       key: 'cars1',
-      frame: Phaser.Math.Between(0, 4),
+      frame: this.frame < 4 ? this.frame + 2 : this.frame,
       repeat: 0,
       setXY: {
         x: 600,
@@ -112,7 +111,6 @@ export default class GameScene extends Phaser.Scene {
     });
     this.opponents2.angle(180);
     this.opponents2.children.iterate((child) => {
-      child.setScale(1.2, 1.2);
       child.setVelocityY(200);
       this.tweens.add({
         targets: child,
@@ -126,7 +124,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.opponents3 = this.physics.add.group({
       key: 'cars1',
-      frame: Phaser.Math.Between(0, 4) + 1,
+      frame: this.frame < 4 ? this.frame + 3 : this.frame,
       repeat: 0,
       setXY: {
         x: 210,
@@ -135,7 +133,6 @@ export default class GameScene extends Phaser.Scene {
     });
     this.opponents3.angle(180);
     this.opponents3.children.iterate((child) => {
-      child.setScale(1.2, 1.2);
       child.setVelocityY(200);
       this.tweens.add({
         targets: child,
@@ -149,7 +146,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.opponents4 = this.physics.add.group({
       key: 'cars1',
-      frame: Phaser.Math.Between(0, 4),
+      frame: this.frame < 4 ? this.frame + 1 : this.frame,
       repeat: 0,
       setXY: {
         x: 345,
@@ -158,7 +155,6 @@ export default class GameScene extends Phaser.Scene {
     });
     this.opponents4.angle(180);
     this.opponents4.children.iterate((child) => {
-      child.setScale(1.2, 1.2);
       child.setVelocityY(200);
       this.tweens.add({
         targets: child,
