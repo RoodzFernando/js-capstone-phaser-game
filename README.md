@@ -47,14 +47,19 @@ Run `npm run start` your default browser will open the game for you.
 | Day 4       |Game Development| Game Development following the defined design|  Game Interface         |&#9745;|
 | Day 5       |Game Documentation| Game Documentation following the defined design|  Game Documentation |&#9745;|
 ---
+## 5. Screenshot of the game & how to play
 
-## 5. Live Play
+![game](https://user-images.githubusercontent.com/50186903/87807932-e2f15280-c826-11ea-8b0e-5ef98ccfae3e.PNG)
+
+## Keypress: Use the arrow left and right to avoid the opposite cars.
+
+## 6. Live Play
 
 [Link to Live Play](https://clash-of-cars.netlify.app/)
 
 ---
 
-## 6. Author Section
+## 7. Author Section
 
 👤 **Author**
 
@@ -64,7 +69,7 @@ Run `npm run start` your default browser will open the game for you.
 
 ---
 
-## 7. 🤝 Contributing
+## 8. 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
@@ -72,13 +77,13 @@ Feel free to check the [issues page](https://github.com/RoodzFernando/js-capston
 
 ---
 
-## 8. Show your support
+## 9. Show your support
 
 Give a ⭐️ if you like this project!
 
 ---
 
-## 9. Acknowledgments & Credits
+## 10. Acknowledgments & Credits
 
 - Hat tip to anyone whose code, sprites/assets, ideas/advice, and knowledge was used.
 
