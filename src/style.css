@@ -1,0 +1,43 @@
+body {
+  background-color: grey;
+  display: flex;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 1px 1px 7px 4px #fff;
+}
+
+.sidebar {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  padding: 15px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 1px 1px 2px 1px;
+}
+
+.score-form {
+  text-align: center;
+}
+
+.form-control {
+  height: 30px;
+  width: 200px;
+  padding: 6px;
+  text-align: center;
+}
+
+.btn {
+  margin-top: 15px;
+  padding: 6px;
+  cursor: pointer;
+  background-color: #023e8a;
+  border-color: #023e8a;
+  color: #fff;
+  box-shadow: 0 0 2px 0 #fff;
+}
